@@ -23,7 +23,7 @@ public:
 	void printLegend();
 
 private:
-	const char *title = "Konrad Sztenderski, 171680 - Puzzle Binarne";
+	const char *title = "Binary Puzzle";
 	const char *implemented = "Zaimplementowano: a, b, c, d, e, f, g, h, i, j, k, l, m, n, o";
 	int legendLength;
 	Cursor *cursor;

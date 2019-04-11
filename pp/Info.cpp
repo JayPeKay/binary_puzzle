@@ -11,7 +11,7 @@ Info::~Info() {
 }
 
 void Info::printInfo(const char *info) {
-	char *temp = (char *)malloc(strlen(info) + 2); // dodatkowo znak nowej linii na koncu
+	char *temp = (char *)malloc(strlen(info) + 2); 
 	int tempCounter = 0;
 	int infoLength = strlen(info);
 	int counter = 0;

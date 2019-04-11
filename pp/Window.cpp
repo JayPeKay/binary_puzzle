@@ -6,20 +6,20 @@ Window::Window(int width, int height) {
 
 	cursor = new Cursor(0, 0);
 
-	const int legendWidth = width / 2 - 1; // szerokoÅÄ legendy w znakach razem z ramka
-	const int legendX = 2; // pozycja legendy x w znakach
-	const int legendY = 3; // pozycja legendy y w znakach
-	legend = new Legend(legendX, legendY, legendWidth, cursor); // moÅ¼liwoÅÄ przypisania pozycji x, y
+	const int legendWidth = width / 2 - 1;
+	const int legendX = 2;
+	const int legendY = 3;
+	legend = new Legend(legendX, legendY, legendWidth, cursor);
 
-	const int infoWidth = legend->width - 2; // szerokoÅÄ podpowiedzi w znakach
-	const int infoX = legend->x + 1; // pozycja podpowiedzi x w znakach
-	const int infoY = legend->height + legend->y + 1; // pozycja podpowiedzi y w znakach
-	info = new Info(infoX, infoY + 1, infoWidth); // moÅ¼liwoÅÄ przypisania pozycji x, y
+	const int infoWidth = legend->width - 2;
+	const int infoX = legend->x + 1;
+	const int infoY = legend->height + legend->y + 1;
+	info = new Info(infoX, infoY + 1, infoWidth);
 
-	const int boardSize = 12; // wielkoÅÄ planszy w iloÅci komÃ³rek
-	const int boardX = (legend->x + legend->width + 2) + (width - legend->x - legend->width - 2) / 2 - boardSize * 2 - 2; // pozycja planszy x w znakach
-	const int boardY = height / 2 - boardSize; // pozycja planszy y w znakach
-	board = new Board(boardX, boardY, boardSize, info, cursor); // moÅ¼liwoÅÄ przypisania pozycji x, y
+	const int boardSize = 12;
+	const int boardX = (legend->x + legend->width + 2) + (width - legend->x - legend->width - 2) / 2 - boardSize * 2 - 2;
+	const int boardY = height / 2 - boardSize;
+	board = new Board(boardX, boardY, boardSize, info, cursor);
 
 
 	gotoxy(infoX, infoY);
@@ -145,13 +145,13 @@ char* Window::startInput(char *inputText, int limit) {
 	do {
 		if (counter < limit) {
 			zn = getch();
-			if (zn == 8 && counter != 0) { // backspace
+			if (zn == 8 && counter != 0) {
 				gotoxy(strlen(inputText) + counter, 1);
 				putch(' ');
 				gotoxy(strlen(inputText) + counter, 1);
 				counter--;
 			}
-			else if (zn >= 33 && zn <= 126) { // od ! (pierwszy normalny znak bez ' ') do ~ ( ostatni normalny znak)
+			else if (zn >= 33 && zn <= 126) {
 				gotoxy(strlen(inputText) + counter + 1, 1);
 				res[counter] = zn;
 				putch(zn);

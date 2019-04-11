@@ -102,7 +102,7 @@ Error Board::isImpossible(int x, int y, char value) {
 	if (getEl(x, y) == '0' || getEl(x, y) == '1')
 		error.unmodifiableField = true;
 
-	// reguÅa 1
+	
 	if (y - 1 > 0 && getEl(x, y - 2) != ' ' && getEl(x, y - 1) != ' ')
 		if (getEl(x, y - 2) % 2 == getEl(x, y - 1) % 2 && getEl(x, y - 1) % 2 == value % 2) {
 			error.ruleOne = true;
@@ -134,7 +134,7 @@ Error Board::isImpossible(int x, int y, char value) {
 			error.ruleOneIsColumn = false;
 		}
 
-	// reguÅa 2
+	
 	int count = 0;
 	for (int i = 0; i < boardSize; i++) {
 		if (getEl(x, i) != ' ' && getEl(x, i) % 2 == value % 2)
@@ -155,7 +155,7 @@ Error Board::isImpossible(int x, int y, char value) {
 		error.ruleTwoIsColumn = false;
 	}
 
-	// regula 3
+	
 	for (int i = 0; i < boardSize; i++) {
 		for (int j = 0; j < boardSize; j++) {
 			if (i == y)
@@ -227,8 +227,8 @@ void Board::randBoard() {
 	int x = 0;
 	int y = 0;
 	int value = 0;
-	int fieldCount = 0; // licznik uzupeÅnionych pÃ³l
-	int count = 0; // licznik prÃ³b
+	int fieldCount = 0;
+	int count = 0;
 
 	do {
 		count++;
@@ -242,8 +242,8 @@ void Board::randBoard() {
 }
 
 void Board::showPrompt(int x, int y) {
-	Error error0 = isImpossible(x, y, '2'); // czy moÅ¼na wpisaÄ 0
-	Error error1 = isImpossible(x, y, '3'); // czy moÅ¼na wpisaÄ 1
+	Error error0 = isImpossible(x, y, '2');
+	Error error1 = isImpossible(x, y, '3');
 
 	if (error0.unmodifiableField) {
 		info->printInfo("Pole jest niemodyfikowalne.");
@@ -348,18 +348,18 @@ void Board::printBoard() {
 				textcolor(getField(j, i)->borderColor);
 
 				if (j == 0)
-					putch(0xc9); // â
-				putch(0xcd); // â
-				putch(0xcd); // â
-				putch(0xcd); // â
+					putch(0xc9);
+				putch(0xcd);
+				putch(0xcd);
+				putch(0xcd);
 				if (j + 1 == boardSize)
-					putch(0xbb); // â
+					putch(0xbb);
 				else {
 					if (getField(j + 1, i)->borderColor < getField(j, i)->borderColor)
 						textcolor(getField(j + 1, i)->borderColor);
 					else
 						textcolor(getField(j, i)->borderColor);
-					putch(0xd1); // â¤
+					putch(0xd1);
 				}
 			}
 		}
@@ -367,20 +367,21 @@ void Board::printBoard() {
 			gotoxy(x, y + boardSize * 2);
 			for (int j = 0; j < boardSize; j++) {
 				textcolor(getField(j, i)->borderColor);
+				
+				if(j == 0)
+					putch(0xc8);
+				putch(0xcd);
+				putch(0xcd);
+				putch(0xcd);
 
-				if (j == 0)
-					putch(0xc8); // â
-				putch(0xcd); // â
-				putch(0xcd); // â
-				putch(0xcd); // â
 				if (j + 1 == boardSize)
-					putch(0xbc); // â
+					putch(0xbc);
 				else {
 					if (getField(j + 1, i)->borderColor < getField(j, i)->borderColor)
 						textcolor(getField(j + 1, i)->borderColor);
 					else
 						textcolor(getField(j, i)->borderColor);
-					putch(0xcf); // â§
+					putch(0xcf);
 				}
 			}
 		}
@@ -391,7 +392,7 @@ void Board::printBoard() {
 			textcolor(getField(j, i)->borderColor);
 
 			if (j == 0)
-				putch(0xba); // â
+				putch(0xba);
 			putch(' ');
 			if (getEl(j, i) == '2') {
 				textcolor(LIGHTBLUE);
@@ -433,13 +434,13 @@ void Board::printBoard() {
 			putch(' ');
 			textcolor(getField(j, i)->borderColor);
 			if (j + 1 == boardSize)
-				putch(0xba); // â
+				putch(0xba); 
 			else {
 				if (getField(j + 1, i)->borderColor < getField(j, i)->borderColor)
 					textcolor(getField(j + 1, i)->borderColor);
 				else
 					textcolor(getField(j, i)->borderColor);
-				putch(0xb3); // â
+				putch(0xb3); 
 			}
 		}
 
@@ -453,12 +454,12 @@ void Board::printBoard() {
 					textcolor(getField(j, i)->borderColor);
 
 				if (j == 0)
-					putch(0xc7); // â
-				putch(0xc4); // â
-				putch(0xc4); // â
-				putch(0xc4); // â
+					putch(0xc7); 
+				putch(0xc4); 
+				putch(0xc4); 
+				putch(0xc4); 
 				if (j + 1 == boardSize)
-					putch(0xb6); // â¢
+					putch(0xb6); 
 				else {
 					if (getField(j + 1, i)->borderColor < getField(j, i)->borderColor)
 						textcolor(getField(j + 1, i)->borderColor);
@@ -468,7 +469,7 @@ void Board::printBoard() {
 						textcolor(getField(j + 1, i + 1)->borderColor);
 					else
 						textcolor(getField(j, i)->borderColor);
-					putch(0xc5); // â¼
+					putch(0xc5); 
 				}
 			}
 		}
